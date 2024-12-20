@@ -21,7 +21,7 @@ const Header = () => {
               Applied Jobs
             </button>
             <p className="text-gray-500">|</p>
-            <p className="hidden sm:block text-gray-500">
+            <p className="max-sm:hidden sm:block text-gray-500">
               Hi, {user.firstName}
             </p>
             <UserButton />

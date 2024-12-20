@@ -1,8 +1,8 @@
 import React, { useContext, useRef } from "react";
-import { Input } from "../../shared/input";
 import { assets } from "../../assets/assets";
 import TrustedCompanies from "../trustedCompanies/TrustedCompanies";
 import { AppContext } from "../../context/AppContext";
+import { Input } from "../../shared";
 
 const Banner = () => {
   const { setSearchFilter, setIsSearched } = useContext(AppContext);

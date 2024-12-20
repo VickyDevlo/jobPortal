@@ -1,12 +1,13 @@
 import React from "react";
-import { Banner, Header, JobListing } from "../components";
+import { Banner, DownloadBanner, Header, JobListing } from "../components";
 
 export const Home = () => {
   return (
-    <div>
+    <>
       <Header />
       <Banner />
       <JobListing />
-    </div>
+      <DownloadBanner />
+    </>
   );
 };
