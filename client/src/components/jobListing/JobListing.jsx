@@ -29,6 +29,8 @@ const JobListing = () => {
     );
   };
 
+  
+
   useEffect(() => {
     const filterJobs = () => {
       return jobs
