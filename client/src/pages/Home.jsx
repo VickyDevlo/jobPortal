@@ -1,5 +1,11 @@
 import React from "react";
-import { Banner, DownloadBanner, Header, JobListing } from "../components";
+import {
+  Banner,
+  DownloadBanner,
+  Header,
+  JobListing,
+  Footer,
+} from "../components";
 
 export const Home = () => {
   return (
@@ -8,6 +14,7 @@ export const Home = () => {
       <Banner />
       <JobListing />
       <DownloadBanner />
+      <Footer />
     </>
   );
 };

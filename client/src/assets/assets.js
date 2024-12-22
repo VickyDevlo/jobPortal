@@ -985,3 +985,18 @@ export const jobsData = [
     category: "Programming",
   },
 ];
+
+export const footerData = [
+  {
+    image: facebook_icon,
+    label: "face-book",
+  },
+  {
+    image: twitter_icon,
+    label: "twitter",
+  },
+  {
+    image: instagram_icon,
+    label: "instagram",
+  },
+];
