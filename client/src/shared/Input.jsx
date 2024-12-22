@@ -1,10 +1,8 @@
 import React, { forwardRef } from "react";
 
-const Input = forwardRef(
-  (
+const Input = forwardRef((
     { img, type, name, placeholder, value, onChange, className, ...rest },
-    ref
-  ) => {
+    ref) => {
     return (
       <div className="flex items-center">
         <img src={img} alt="icon" className="h-4 sm:h-5" />

@@ -11,7 +11,10 @@ const JobListing = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   return (
-    <div className="container mx-auto 2xl:px-20 flex flex-row max-lg:flex-col max-lg:space-y-8 py-8">
+    <div
+      className="container mx-auto 2xl:px-20 flex flex-row max-lg:flex-col
+     max-lg:space-y-8 py-8"
+    >
       <div className="w-full lg:w-1/4 bg-white px-4">
         {isSearched &&
           (searchFilter.title !== "" || searchFilter.location !== "") && (
@@ -22,8 +25,8 @@ const JobListing = () => {
               <div className="mb-4 text-gray-800">
                 {searchFilter.title && (
                   <span
-                    className="inline-flex items-center gap-2.5 bg-blue-50 border border-blue-200
-                  px-4 py-1.5 rounded"
+                    className="inline-flex items-center gap-2.5 bg-blue-50 
+                  border border-blue-200 capitalize px-4 py-1.5 rounded"
                   >
                     {searchFilter.title}
                     <img
@@ -40,7 +43,7 @@ const JobListing = () => {
                   <span
                     className="ml-1 inline-flex items-center gap-2.5
                      bg-red-50 border border-red-200
-                  px-4 py-1.5 rounded"
+                  px-4 py-1.5 rounded capitalize"
                   >
                     {searchFilter.location}
                     <img
@@ -48,7 +51,7 @@ const JobListing = () => {
                       onClick={() =>
                         setSearchFilter((prev) => ({ ...prev, location: "" }))
                       }
-                      alt=""
+                      alt="close_icon"
                       className="cursor-pointer"
                     />
                   </span>
@@ -59,7 +62,9 @@ const JobListing = () => {
 
         <button
           onClick={() => setShowFilter(!showFilter)}
-          className="lg:hidden px-6 py-1.5 border border-gray-400 rounded"
+          className={`lg:hidden px-6 py-1.5 border ${
+            showFilter ? "bg-blue-50" : "bg-red-50"
+          } border-gray-400 rounded`}
         >
           {showFilter ? "Filters" : "Close"}
         </button>

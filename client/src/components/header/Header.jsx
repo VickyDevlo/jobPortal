@@ -1,7 +1,7 @@
 import React from "react";
 import { assets } from "../../assets/assets";
 import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <div className="shadow-md py-4">
-      <div className="container mx-auto px-4 2xl:px-20 flex items-center justify-between">
+      <div className="container mx-auto px-2 2xl:px-20 flex items-center justify-between">
         <img src={assets.logo} alt="logo" className="h-8 sm:h-8" />
         {user ? (
           <div className="ml-3 flex items-center gap-1 md:gap-2">
@@ -20,18 +20,24 @@ const Header = () => {
             >
               Applied Jobs
             </button>
-            <p className="text-gray-500">|</p>
+            <p className="text-gray-400">|</p>
             <p className="max-sm:hidden sm:block text-gray-500">
               Hi, {user.firstName}
             </p>
             <UserButton />
           </div>
         ) : (
-          <div className="flex flex-wrap gap-4 max-sm:text-sm">
-            <button className="text-gray-600"> Recruiter Login</button>
+          <div className="flex gap-1 md:gap-4 max-sm:text-sm">
             <button
-              onClick={(e) => openSignIn()}
-              className="text-white bg-blue-900 font-medium px-4 sm:px-9 py-2 rounded-full"
+              className="text-gray-600 ml-1 md:m-0 border border-red-100 px-2 
+            rounded hover:bg-red-50 transition-all"
+            >
+              Employers
+            </button>
+            <button
+              onClick={() => openSignIn()}
+              className="text-white bg-blue-700 font-medium px-4 sm:px-4 py-2 
+              rounded"
             >
               Login
             </button>
