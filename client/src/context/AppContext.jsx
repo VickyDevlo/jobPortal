@@ -8,21 +8,23 @@ export const AppContextProvider = ({ children }) => {
     title: "",
     location: "",
   });
-
   const [isSearched, setIsSearched] = useState(false);
   const [jobs, setJobs] = useState([]);
+  const [showEmployersLogin, setShowEmployersLogin] = useState(false);
 
   // fetch jobData
 
-  const fetchJobs = async () =>{
-      setJobs(jobsData)
-  }
+  const fetchJobs = async () => {
+    setJobs(jobsData);
+  };
 
-  useEffect(()=>{
-    fetchJobs()
-  },[])
+  useEffect(() => {
+    fetchJobs();
+  }, []);
 
   const value = {
+    showEmployersLogin,
+    setShowEmployersLogin,
     searchFilter,
     setSearchFilter,
     isSearched,

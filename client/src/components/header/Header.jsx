@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { assets } from "../../assets/assets";
 import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
 
 const Header = () => {
   const navigate = useNavigate();
   const { openSignIn } = useClerk();
   const { user } = useUser();
+  const { setShowEmployersLogin } = useContext(AppContext);
 
   return (
     <div className="shadow-md py-4">
@@ -36,6 +38,7 @@ const Header = () => {
             <button
               className="text-gray-600 ml-1 md:m-0 border border-red-100 px-2 
             rounded hover:bg-red-50 transition-all"
+              onClick={() => setShowEmployersLogin(true)}
             >
               Employers
             </button>
