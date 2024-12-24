@@ -119,7 +119,7 @@ const JobListing = () => {
             showFilter ? "bg-blue-50" : "bg-red-50"
           } border-gray-400 rounded`}
         >
-          {showFilter ? "Filters" : "Close"}
+          {showFilter ? "X" : "Filters"}
         </button>
 
         <div className={`${showFilter ? "" : "max-lg:hidden"}`}>

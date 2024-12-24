@@ -11,7 +11,12 @@ const Header = () => {
   return (
     <div className="shadow-md py-4">
       <div className="container mx-auto px-2 2xl:px-20 flex items-center justify-between">
-        <img src={assets.logo} alt="logo" className="h-8 sm:h-8" />
+        <img
+          src={assets.logo}
+          alt="logo"
+          onClick={() => navigate("/")}
+          className="h-8 sm:h-8 cursor-pointer"
+        />
         {user ? (
           <div className="ml-3 flex items-center gap-1 md:gap-2">
             <button
