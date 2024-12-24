@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { JobCard } from "../../shared";
+import { AppContext } from "../../context/AppContext";
 
-const MoreJobSection = ({ jobData, jobs }) => {
+const MoreJobSection = ({ jobData }) => {
+  const { jobs } = useContext(AppContext);
+  
   return (
     <>
       <h2>More Jobs from {jobData.companyId.name}</h2>

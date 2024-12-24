@@ -79,7 +79,7 @@ export const ApplyJobs = () => {
               </button>
             </div>
             <div className="w-full lg:w-1/3 mt-8 lg:mt-0 space-y-5">
-              <MoreJobSection jobData={jobData} jobs={jobs} />
+              <MoreJobSection jobData={jobData} />
             </div>
           </div>
         </div>
