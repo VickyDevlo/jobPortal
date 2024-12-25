@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { Loader } from "../shared";
-import { MoreJobSection } from "../components";
+import { Footer, Header, MoreJobSection } from "../components";
 import { assets } from "../assets/assets";
 import kconvert from "k-convert";
 import moment from "moment";
@@ -25,6 +25,7 @@ export const ApplyJobs = () => {
 
   return jobData ? (
     <>
+      <Header />
       <div className="container mx-auto min-h-screen flex flex-col py-10 px-4 2xl:px-20">
         <div className="bg-white text-black rounded-lg w-full">
           <div className="flex justify-center md:justify-between flex-wrap gap-8 px-14 py-20 mb-6 bg-sky-50 border border-sky-400 rounded-xl">
@@ -84,6 +85,7 @@ export const ApplyJobs = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   ) : (
     <Loader />
