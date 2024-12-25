@@ -7,13 +7,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("API Working...");
+app.get("/", (req, res) => res.send("API Working..."));
+
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => {
+  console.log(`Server is runing on port ${PORT}`);
 });
-
-const PORT = process.env.PORT || 8000
-
-app.listen(PORT,()=>{
-  console.log(`Server is runing on port, ${PORT}`);
-  
-})
