@@ -6,14 +6,13 @@ import { clerkWebHooks } from "./controllers/webhooks.js";
 
 const app = express();
 
-await connectDB();
+connectDB();
 
 app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => res.send("API Working..."));
-
-app.post('/webhooks', clerkWebHooks)
+app.post("/webhooks", clerkWebHooks);
 
 const PORT = process.env.PORT || 8000;
 
