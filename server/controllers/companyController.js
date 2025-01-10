@@ -1,8 +1,8 @@
 import bcrypt from "bcrypt";
 import Company from "../models/Company.js";
 import { v2 as cloudinary } from "cloudinary";
-import generateToken from "../utils/generateToken.js"; 
-import Job from '../models/Job.js'
+import generateToken from "../utils/generateToken.js";
+import Job from "../models/Job.js";
 
 export const registerCompany = async (req, res) => {
   const { name, email, password } = req.body;
@@ -178,4 +178,3 @@ export const changeVisibility = async (req, res) => {
 export const getCompanyJobApplicants = async (req, res) => {};
 
 export const changeJobApplicationsStatus = async (req, res) => {};
-
