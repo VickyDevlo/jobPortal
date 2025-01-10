@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
+import { AppContext } from "../context/AppContext";
 
 export const Dashboard = () => {
   const navigate = useNavigate();
+
+  const { companyData } = useContext(AppContext);
 
   return (
     <div className="min-h-screen">
@@ -15,21 +18,28 @@ export const Dashboard = () => {
             className="h-8 sm:h-8 cursor-pointer"
             onClick={() => navigate("/")}
           />
-          <div className="flex items-center gap-4">
-            <p className="max-sm:hidden">Welcome, User</p>
-            <div className="relative group">
-              <img
-                src={assets.company_icon}
-                alt=""
-                className="w-8 border rounded-full"
-              />
-              <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-10">
-                <ul className="list-none m-0 p-2 bg-white rounded border text-sm">
-                  <li className="py-1 px-2 cursor-pointer pr-10">Logout</li>
-                </ul>
+          {companyData && (
+            <div className="flex items-center gap-4">
+              <p className="max-sm:hidden text-gray-800 font-semibold">
+                Welcome, &nbsp;
+                <span className="text-gray-600 capitalize">
+                  {companyData.name}
+                </span>
+              </p>
+              <div className="relative group">
+                <img
+                  src={companyData.image}
+                  alt=""
+                  className="w-8 border rounded-full"
+                />
+                <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-10">
+                  <ul className="list-none m-0 p-2 bg-white rounded border text-sm">
+                    <li className="py-1 px-2 cursor-pointer pr-10">Logout</li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
       <div className="flex items-start">

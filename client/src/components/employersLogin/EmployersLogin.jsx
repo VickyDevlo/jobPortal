@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import { assets } from "../../assets/assets";
 import { InputField } from "../../shared";
 import { AppContext } from "../../context/AppContext";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const EmployersLogin = () => {
   const [isLoginMode, setIsLoginMode] = useState(true);
@@ -12,12 +15,55 @@ const EmployersLogin = () => {
   const [image, setImage] = useState(false);
   const [isTextDataSubmited, setIsTextDataSubmited] = useState(false);
 
-  const { setShowEmployersLogin } = useContext(AppContext);
+  const navigate = useNavigate();
+
+  const { setShowEmployersLogin, backendUrl, setCompanyToken, setCompanyData } =
+    useContext(AppContext);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     if (!isLoginMode && !isTextDataSubmited) {
-      setIsTextDataSubmited(true);
+     return setIsTextDataSubmited(true);
+    }
+
+    try {
+      if (isLoginMode) {
+        const { data } = await axios.post(`${backendUrl}/api/company/login`, {
+          email,
+          password,
+        });
+        if (data.success) {
+          setCompanyData(data.company);
+          setCompanyToken(data.token);
+          localStorage.setItem("companyToken", data.token);
+          setShowEmployersLogin(false);
+          navigate("/dashboard/add-job");
+          toast.success("login successfully...");
+        } else {
+          toast.error(data.message);
+        }
+      } else {
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("password", password);
+        formData.append("image", image);
+
+        const { data } = await axios.post(
+          `${backendUrl}/api/company/register`,formData);
+          if (data.success) {
+            setCompanyData(data.company);
+            setCompanyToken(data.token);
+            localStorage.setItem("companyToken", data.token);
+            setShowEmployersLogin(false);
+            navigate("/dashboard/add-job");
+            toast.success("login successfully...");
+          } else {
+            toast.error(data.message);
+          }
+      }
+    } catch (error) {
+      toast.error(error)
     }
   };
 

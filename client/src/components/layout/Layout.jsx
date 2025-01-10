@@ -12,21 +12,28 @@ import {
 import { EmployersLogin } from "../../components";
 import { AppContext } from "../../context/AppContext";
 import "quill/dist/quill.snow.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Layout = () => {
-  const { showEmployersLogin } = useContext(AppContext);
+  const { showEmployersLogin, companyToken } = useContext(AppContext);
 
   return (
     <>
       {showEmployersLogin && <EmployersLogin />}
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/apply-jobs/:id" element={<ApplyJobs />} />
         <Route path="/applications" element={<Applications />} />
         <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="add-job" element={<AddJobs />} />
-          <Route path="manage-job" element={<ManageJobs />} />
-          <Route path="view-applications" element={<ViewApplications />} />
+          {companyToken ? (
+            <>
+              <Route path="add-job" element={<AddJobs />} />
+              <Route path="manage-job" element={<ManageJobs />} />
+              <Route path="view-applications" element={<ViewApplications />} />
+            </>
+          ) : null}
         </Route>
       </Routes>
     </>
