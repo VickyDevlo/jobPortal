@@ -1,4 +1,4 @@
-import Job from '../models/Job.js'
+import Job from "../models/Job.js";
 
 export const getJobs = async (req, res) => {
   try {
@@ -33,12 +33,11 @@ export const getJobById = async (req, res) => {
         message: "Job not found",
       });
     }
-    
+
     res.json({
       success: true,
       job,
     });
-
   } catch (error) {
     res.json({
       success: false,
