@@ -1,7 +1,7 @@
 import User from "../models/User.js";
-import JobApplication from '../models/JobApplication.js'
-import Job from '../models/Job.js'
+import JobApplication from "../models/JobApplication.js";
 import { v2 as cloudinary } from "cloudinary";
+import Job from "../models/Job.js";
 
 export const getUserData = async (req, res) => {
   const userId = req.auth.userId;
