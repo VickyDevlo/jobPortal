@@ -1,7 +1,6 @@
-import { RetryScheduleInOut } from "svix";
-import Job from "../models/Job.js";
-import JobApplication from "../models/jobApplicaton.js";
 import User from "../models/User.js";
+import JobApplication from "../models/jobApplicaton.js";
+import Job from "../models/Job.js";
 import { v2 as cloudinary } from "cloudinary";
 
 export const getUserData = async (req, res) => {
