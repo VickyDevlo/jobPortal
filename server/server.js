@@ -1,13 +1,13 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import { clerkMiddleware } from "@clerk/express";
 import connectDB from "./config/db.js";
 import { clerkWebHooks } from "./controllers/webhooks.js";
 import companyRoutes from "./routes/companyRoutes.js";
 import connectCloudinary from "./config/cloudinary.js";
 import jobRoutes from "./routes/jobRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
-import { clerkMiddleware } from "@clerk/express";
 
 dotenv.config();
 const app = express();
