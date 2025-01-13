@@ -29,7 +29,7 @@ app.use(express.json());
 app.use(clerkMiddleware());
 
 
-app.get("/", (req, res) => res.send("API Working..."));
+app.get("/", (_, res) => res.send("API Working & Server is Created Successfully...."));
 app.post("/webhooks", clerkWebHooks);
 app.use("/api/company", companyRoutes);
 app.use("/api/jobs", jobRoutes);
