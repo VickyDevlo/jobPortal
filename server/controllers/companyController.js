@@ -81,7 +81,7 @@ export const loginCompany = async (req, res) => {
   } catch (error) {
     res.json({
       success: false,
-      message: error.message,
+      message: "Company not register...",
     });
   }
 };
