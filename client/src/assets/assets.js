@@ -287,7 +287,7 @@ export const jobsData = [
             <li>Excellent problem-solving and critical-thinking skills.</li>
         </ol>`,
     salary: 72000,
-    date: 1729681667114,
+    date: 1/15/2025,
     category: "Data Science",
   },
   {

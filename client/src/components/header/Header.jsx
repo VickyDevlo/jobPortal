@@ -8,7 +8,10 @@ const Header = () => {
   const navigate = useNavigate();
   const { openSignIn } = useClerk();
   const { user } = useUser();
-  const { setShowEmployersLogin } = useContext(AppContext);
+  const { setShowEmployersLogin, companyToken, companyData } =
+    useContext(AppContext);
+
+  console.log(companyData && companyData);
 
   return (
     <div className="shadow-md py-4">
@@ -36,11 +39,26 @@ const Header = () => {
         ) : (
           <div className="flex gap-1 md:gap-4 max-sm:text-sm">
             <button
-              className="text-gray-600 ml-1 md:m-0 border border-red-100 px-2 
-            rounded hover:bg-red-50 transition-all"
-              onClick={() => setShowEmployersLogin(true)}
+              className={`text-gray-600 ml-1 md:m-0 border border-red-100 px-2 
+            rounded hover:bg-red-50 transition-all ${
+              companyToken &&
+              "border-none font-bold capitalize hover:bg-transparent"
+            }`}
+              onClick={() => {
+                companyToken
+                  ? navigate("/dashboard")
+                  : setShowEmployersLogin(true);
+              }}
             >
-              Employers
+              {companyToken
+                ? companyData && (
+                    <img
+                      src={companyData.image}
+                      alt=""
+                      className="md:h-9 md:w-9 h-7 w-7 object-contain"
+                    />
+                  )
+                : "Employers"}
             </button>
             <button
               onClick={() => openSignIn()}
