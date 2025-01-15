@@ -1,7 +1,7 @@
 import User from "../models/UserModel.js";
 import JobApplication from "../models/JobApplicationModel.js";
 import { v2 as cloudinary } from "cloudinary";
-import Job from "../models/JobModel.js"
+import Job from "../models/JobModel.js";
 
 export const getUserData = async (req, res) => {
   const userId = req.auth.userId;
@@ -37,8 +37,8 @@ export const applyForJob = async (req, res) => {
     const isAlreadyApplied = await JobApplication.find({ jobId, userId });
 
     if (isAlreadyApplied.length > 0) {
-      res.json({
-        success: true,
+     return res.json({
+        success: false,
         message: "Already Applied...",
       });
     }

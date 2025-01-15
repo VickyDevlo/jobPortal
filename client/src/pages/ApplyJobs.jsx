@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { Loader } from "../shared";
 import { Footer, Header, MoreJobSection } from "../components";
@@ -8,10 +8,17 @@ import kconvert from "k-convert";
 import moment from "moment";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useAuth } from "@clerk/clerk-react";
 
 export const ApplyJobs = () => {
   const [jobData, setJobData] = useState(null);
-  const { backendUrl } = useContext(AppContext);
+  const [isAlreadyApplied, setIsAlreadyApplied] = useState(false);
+  const navigate = useNavigate();
+
+  const { backendUrl, userData, userApplications, fetchUserApplications } =
+    useContext(AppContext);
+
+  const { getToken } = useAuth();
   const { id } = useParams();
 
   const fetchJob = async () => {
@@ -27,9 +34,54 @@ export const ApplyJobs = () => {
     }
   };
 
+  const applyHandler = async () => {
+    try {
+      if (!userData) {
+        return toast.error("Login to apply for jobs");
+      }
+
+      if (!userData.resume) {
+        navigate("/applications");
+        return toast.error("Upload resume to apply");
+      }
+
+      const token = await getToken();
+
+      const { data } = await axios.post(
+        `${backendUrl}/api/users/apply`,
+        { jobId: jobData._id },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      if (data.success) {
+        toast.success(data.message);
+       fetchUserApplications()
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const alreadyApplied = () => {
+    const hasApplied = userApplications.some(
+      (item) => item.jobId._id === jobData._id
+    );
+    setIsAlreadyApplied(hasApplied);
+  };
+
   useEffect(() => {
     fetchJob();
   }, [id]);
+
+  useEffect(() => {
+    if (userApplications.length > 0 && jobData) {
+      alreadyApplied();
+    }
+  }, [jobData, userApplications, id]);
 
   return jobData ? (
     <>
@@ -68,8 +120,13 @@ export const ApplyJobs = () => {
               </div>
             </div>
             <div className="flex flex-col justify-center text-end text-sm max-md:mx-auto max-md:text-center">
-              <button className="bg-blue-600 p-2.5 px-10 text-white rounded">
-                Apply Now
+              <button
+                onClick={applyHandler}
+                className={`${
+                  isAlreadyApplied && "bg-red-600"
+                } bg-blue-600 p-2.5 px-10 text-white rounded text-base`}
+              >
+                {isAlreadyApplied ? "Applied" : "Apply Now"}
               </button>
               <p className="mt-1 text-gray-600">
                 Posted {moment(jobData.date).fromNow()}
@@ -83,8 +140,13 @@ export const ApplyJobs = () => {
                 className="rich-text"
                 dangerouslySetInnerHTML={{ __html: jobData.description }}
               ></div>
-              <button className="bg-blue-600 p-2.5 px-10 mt-10 text-white rounded">
-                Apply Now
+              <button
+                onClick={applyHandler}
+                className={`${
+                  isAlreadyApplied && "bg-red-600"
+                } bg-blue-600 p-2.5 px-10 text-white rounded text-base`}
+              >
+                {isAlreadyApplied ? "Applied" : "Apply Now"}
               </button>
             </div>
             <div className="w-full lg:w-1/3 mt-8 lg:mt-0 space-y-5">
