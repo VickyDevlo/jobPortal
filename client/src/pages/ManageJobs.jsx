@@ -19,8 +19,7 @@ export const ManageJobs = () => {
       });
 
       if (data.success) {
-        setJobs(data.jobsData.reverse());
-        console.log(data.jobsData);
+        setJobs(data.jobsData.reverse()); 
       } else {
         toast.error(data.message);
       }

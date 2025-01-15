@@ -6,22 +6,30 @@ import { Footer, Header, MoreJobSection } from "../components";
 import { assets } from "../assets/assets";
 import kconvert from "k-convert";
 import moment from "moment";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 export const ApplyJobs = () => {
   const [jobData, setJobData] = useState(null);
-  const { jobs } = useContext(AppContext);
+  const { backendUrl } = useContext(AppContext);
   const { id } = useParams();
 
   const fetchJob = async () => {
-    const data = jobs.filter((job) => job._id === id);
-    if (data.length !== 0) {
-      setJobData(data[0]);
+    try {
+      const { data } = await axios.get(`${backendUrl}/api/jobs/${id}`);
+      if (data.success) {
+        setJobData(data.job);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
     }
   };
 
   useEffect(() => {
-    jobs.length > 0 && fetchJob();
-  }, [id, jobs]);
+    fetchJob();
+  }, [id]);
 
   return jobData ? (
     <>
