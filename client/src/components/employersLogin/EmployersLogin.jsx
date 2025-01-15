@@ -23,7 +23,7 @@ const EmployersLogin = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     if (!isLoginMode && !isTextDataSubmited) {
-     return setIsTextDataSubmited(true);
+      return setIsTextDataSubmited(true);
     }
 
     try {
@@ -50,20 +50,25 @@ const EmployersLogin = () => {
         formData.append("image", image);
 
         const { data } = await axios.post(
-          `${backendUrl}/api/company/register`,formData);
-          if (data.success) {
-            setCompanyData(data.company);
-            setCompanyToken(data.token);
-            localStorage.setItem("companyToken", data.token);
-            setShowEmployersLogin(false);
-            navigate("/dashboard/add-job");
-            toast.success("login successfully...");
-          } else {
-            toast.error(data.message);
-          }
+          `${backendUrl}/api/company/register`,
+          formData
+        );
+        if (data.success) {
+          // setCompanyData(data.company);
+          // setCompanyToken(data.token);
+          // localStorage.setItem("companyToken", data.token);
+          // setShowEmployersLogin(false);
+          setIsLoginMode(true);
+          setEmail("");
+          setPassword("");
+          // navigate("/dashboard/add-job");
+          toast.success("Register Successfully...");
+        } else {
+          toast.error(data.message);
+        }
       }
     } catch (error) {
-      toast.error(error)
+      toast.error(error.message);
     }
   };
 
