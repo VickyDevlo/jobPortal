@@ -21,8 +21,8 @@ export const AddJobs = () => {
   }, []);
 
   return (
-    <div className="flex-1 h-full p-2 sm:p-5">
-      <form className="container p-4 flex flex-col w-full items-start gap-3">
+    <div className="flex-1 h-full">
+      <form className="container max-sm:p-5 sm:p-8 flex flex-col w-full items-start gap-3">
         <div className="w-full">
           <p className="mb-2">Job Title</p>
           <input
