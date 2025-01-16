@@ -22,7 +22,7 @@ export const InputField = ({
       onChange={onChange}
       placeholder={placeholder}
       required={required}
-      className={`outline-none text-sm flex-1 ${className}`}
+      className={`outline-none text-sm flex-1 w-full ${className}`}
     />
     {name === "password" && (
       <label className="cursor-pointer text-gray-400" onClick={showPassHandler}>

@@ -114,7 +114,7 @@ const EmployersLogin = () => {
               </p>
             </div>
           ) : (
-            <div className="w-full">
+            <>
               {!isLoginMode && (
                 <InputField
                   icon={assets.person_icon}
@@ -156,7 +156,7 @@ const EmployersLogin = () => {
                   Forgot Password
                 </p>
               )}
-            </div>
+            </>
           )}
         </>
         <button
