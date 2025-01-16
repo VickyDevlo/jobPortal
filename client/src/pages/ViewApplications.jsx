@@ -56,17 +56,25 @@ export const ViewApplications = () => {
         <p className="text-xl sm:text-2xl">No Applications Available!!!</p>
       </div>
     ) : (
-      <div className="container mx-auto max-sm:p-5 sm:p-8">
+      <div className="container mx-auto max-sm:py-5 sm:p-8">
         <div>
           <table className="w-full max-w-4xl bg-white border border-gray-200 max-sm:text-sm">
             <thead>
               <tr className="border-b text-center">
-                <th className="py-2 px-4">Sr.No.</th>
-                <th className="py-2 px-4">User Name</th>
+                <th className="py-2 px-1 max-sm:text-xs whitespace-nowrap">
+                  Sr.No.
+                </th>
+                <th className="py-2 px-1 max-sm:text-xs whitespace-nowrap">
+                  User Name
+                </th>
                 <th className="py-2 px-4 max-sm:hidden">Job Title</th>
                 <th className="py-2 px-4 max-sm:hidden">Location</th>
-                <th className="py-2 px-4">Resume</th>
-                <th className="py-2 px-4">Action</th>
+                <th className="py-2 px-1 max-sm:text-xs whitespace-nowrap">
+                  Resume
+                </th>
+                <th className="py-2 px-1 max-sm:text-xs whitespace-nowrap">
+                  Action
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -74,7 +82,7 @@ export const ViewApplications = () => {
                 .filter((item) => item.jobId && item.userId)
                 .map((applicant, i) => (
                   <tr key={i} className="text-gray-700 text-center">
-                    <td className="py-2 px-4 border-b text-center">{i + 1}</td>
+                    <td className="py-2 border-b text-center">{i + 1}</td>
                     <td className="border-b">
                       <div className="flex items-center">
                         <img
@@ -82,7 +90,7 @@ export const ViewApplications = () => {
                           alt=""
                           className="w-8 h-8 rounded-full mr-3 max-sm:hidden"
                         />
-                        <span>{applicant.userId.name}</span>
+                        <span className="text-sm">{applicant.userId.name}</span>
                       </div>
                     </td>
                     <td className="py-2 px-4 border-b max-sm:hidden">

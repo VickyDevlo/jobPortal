@@ -59,7 +59,7 @@ export const ManageJobs = () => {
         <p className="text-xl sm:text-2xl">No Jobs Available or Posted!!!</p>
       </div>
     ) : (
-      <div className="container mx-auto max-w-5xl max-sm:p-5 sm:p-8">
+      <div className="container mx-auto max-w-5xl max-sm:py-5 sm:p-8">
         <div className="overflow-x-auto">
           <table
             className="min-w-full bg-white max-sm:text-sm border 
@@ -68,11 +68,13 @@ export const ManageJobs = () => {
             <thead>
               <tr className="text-center">
                 <th className="py-2 px-4 border-b max-sm:hidden">Sr.No.</th>
-                <th className="py-2 px-4 border-b">Job Title</th>
+                <th className="border-b py-2 px-1 max-sm:text-xs">Job Title</th>
                 <th className="py-2 px-4 border-b max-sm:hidden">Date</th>
                 <th className="py-2 px-4 border-b max-sm:hidden">Location</th>
-                <th className="py-2 px-4 border-b">Applicants</th>
-                <th className="py-2 px-4 border-b">Visible</th>
+                <th className="border-b py-2 px-1 max-sm:text-xs">
+                  Applicants
+                </th>
+                <th className="border-b py-2 px-1 max-sm:text-xs">Visible</th>
               </tr>
             </thead>
             <tbody>
