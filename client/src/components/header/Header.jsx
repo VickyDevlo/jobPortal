@@ -24,12 +24,12 @@ const Header = () => {
           <div className="ml-3 flex items-center gap-1 md:gap-2">
             <button
               onClick={() => navigate("/applications")}
-              className="text-xs sm:text-base text-gray-500 whitespace-nowrap"
+              className="text-xs sm:text-base font-medium text-gray-500 whitespace-nowrap"
             >
               Applied Jobs
             </button>
             <p className="text-gray-400">|</p>
-            <p className="max-sm:hidden sm:block text-gray-500">
+            <p className="max-sm:hidden font-semibold sm:block text-gray-800">
               Hi, {user.firstName}
             </p>
             <UserButton />

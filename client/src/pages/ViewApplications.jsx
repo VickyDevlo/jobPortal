@@ -63,7 +63,7 @@ export const ViewApplications = () => {
                 <th className="py-2 max-sm:px-1 px-1 max-sm:text-xs sm:whitespace-nowrap max-sm:hidden">
                   Sr.No.
                 </th>
-                <th className="py-2 max-sm:px-1 px-1 max-sm:text-xs whitespace-nowrap">
+                <th className="py-3 px-1 text-xs sm:text-sm whitespace-nowrap">
                   User Name
                 </th>
                 <th className="py-2 max-sm:px-1 px-4 max-sm:hidden">
@@ -80,7 +80,7 @@ export const ViewApplications = () => {
                 </th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="table-bg">
               {applicants
                 .filter((item) => item.jobId && item.userId)
                 .map((applicant, i) => (

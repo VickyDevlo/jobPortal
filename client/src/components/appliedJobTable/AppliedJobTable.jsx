@@ -11,27 +11,27 @@ const AppliedJobTable = () => {
         Job Applied
       </h2>
 
-      <table className="min-w-full bg-white border rounded-lg">
+      <table className="min-w-full w-full bg-white border rounded-lg">
         <thead>
           <tr className="border-b">
-            <th className="py-2 px-1 text-xs sm:text-sm whitespace-nowrap">
+            <th className="py-3 px-1 text-xs sm:text-sm whitespace-nowrap">
               Company
             </th>
-            <th className="py-2 px-1 text-xs sm:text-sm whitespace-nowrap">
+            <th className="py-3 px-1 text-xs sm:text-sm whitespace-nowrap">
               Job Title
             </th>
-            <th className="py-2 px-1 text-xs sm:text-sm whitespace-nowrap hidden sm:table-cell">
+            <th className="py-3 px-1 text-xs sm:text-sm whitespace-nowrap hidden sm:table-cell">
               Location
             </th>
-            <th className="py-2 px-1 text-xs sm:text-sm whitespace-nowrap hidden sm:table-cell">
+            <th className="py-3 px-1 text-xs sm:text-sm whitespace-nowrap hidden sm:table-cell">
               Date
             </th>
-            <th className="py-2 px-1 text-xs sm:text-sm whitespace-nowrap">
+            <th className="py-3 px-1 text-xs sm:text-sm whitespace-nowrap">
               Status
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="table-bg">
           {userApplications.map((jobApply, i) => (
             <tr key={i} className="border-b text-center">
               <td className="px-2 py-3 capitalize flex items-center gap-3 justify-center">

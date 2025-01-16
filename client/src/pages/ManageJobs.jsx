@@ -75,7 +75,7 @@ export const ManageJobs = () => {
                 <th className="py-2 px-1 max-sm:text-xs">Visible</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="table-bg">
               {jobs.map((job, i) => (
                 <tr key={i} className="text-center text-gray-700 border-b">
                   <td className="py-2 max-sm:px-2 px-4 font-medium max-sm:hidden">
