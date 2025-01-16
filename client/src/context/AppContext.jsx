@@ -45,7 +45,6 @@ export const AppContextProvider = ({ children }) => {
 
       if (data.success) {
         setCompanyData(data.company);
-        console.log(data);
       } else {
         toast.error(data.message);
       }
@@ -79,7 +78,6 @@ export const AppContextProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (data.success) {
-        console.log('data', data);
         
         setUserApplications(data.applications);
       } else {

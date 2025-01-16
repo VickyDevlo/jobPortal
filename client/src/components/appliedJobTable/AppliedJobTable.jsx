@@ -24,7 +24,7 @@ const AppliedJobTable = () => {
           {userApplications.map((jobApply, i) =>
             true ? (
               <tr key={i}>
-                <td className="px-4 py-3 flex items-center gap-2 border-b capitalize">
+                <td className="px-4 py-3 flex items-center gap-2 capitalize">
                   <img
                     src={jobApply.companyId.image}
                     alt=""

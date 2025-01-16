@@ -51,12 +51,12 @@ export const ViewApplications = () => {
   }, [companyToken]);
 
   return applicants ? (
-    applicants.length === 0 ? (
-      <div className="flex items-center justify-center h-[70vh]">
-        <p className="text-xl sm:text-2xl">No Applications Available!!!</p>
-      </div>
-    ) : (
-      <div className="container mx-auto max-sm:py-5 sm:p-8">
+    <div className="container mx-auto max-sm:py-5 sm:p-8">
+      {applicants.length === 0 ? (
+        <div className="flex items-center justify-center h-[70vh]">
+          <p className="text-xl sm:text-2xl">No Applications Available!!!</p>
+        </div>
+      ) : (
         <div>
           <table className="w-full max-w-4xl bg-white border border-gray-200 max-sm:text-sm">
             <thead>
@@ -160,8 +160,8 @@ export const ViewApplications = () => {
             </tbody>
           </table>
         </div>
-      </div>
-    )
+      )}
+    </div>
   ) : (
     <Loader />
   );

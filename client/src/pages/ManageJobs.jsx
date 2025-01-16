@@ -54,16 +54,16 @@ export const ManageJobs = () => {
   }, [companyToken]);
 
   return jobs ? (
-    jobs.length === 0 ? (
-      <div className="flex items-center justify-center h-[70vh]">
-        <p className="text-xl sm:text-2xl">No Jobs Available or Posted!!!</p>
-      </div>
-    ) : (
-      <div className="container mx-auto max-w-5xl max-sm:py-5 sm:p-8">
+    <div className="container mx-auto max-w-5xl max-sm:py-5 sm:p-8">
+      {jobs.length === 0 ? (
+        <div className="flex items-center justify-center h-[70vh]">
+          <p className="text-xl sm:text-2xl">No Jobs Available or Posted!!!</p>
+        </div>
+      ) : (
         <div className="overflow-x-auto">
           <table
             className="min-w-full bg-white max-sm:text-sm border 
-        border-gray-200"
+            border-gray-200"
           >
             <thead>
               <tr className="text-center">
@@ -102,16 +102,16 @@ export const ManageJobs = () => {
             </tbody>
           </table>
         </div>
-        <div className="mt-4 flex justify-end">
-          <button
-            onClick={() => navigate("/dashboard/add-job")}
-            className="bg-black text-white px-4 py-2 rounded"
-          >
-            Add New Job
-          </button>
-        </div>
+      )}
+      <div className="mt-4 flex justify-end">
+        <button
+          onClick={() => navigate("/dashboard/add-job")}
+          className="bg-black text-white px-4 py-2 rounded"
+        >
+          Add New Job
+        </button>
       </div>
-    )
+    </div>
   ) : (
     <Loader />
   );
