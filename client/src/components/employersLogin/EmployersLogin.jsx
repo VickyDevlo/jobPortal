@@ -83,7 +83,7 @@ const EmployersLogin = () => {
     <div className="fixed inset-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center">
       <form
         onSubmit={onSubmitHandler}
-        className="relative w-[300px] sm:w-[350px] bg-white p-8 sm:p-10 rounded-xl text-slate-500"
+        className="relative w-[350px] bg-white p-10 rounded-xl text-slate-500"
       >
         <h1 className="text-center text-2xl text-neutral-700 font-medium mb-3">
           Employer {isLoginMode ? "Login" : "SignUp"}
