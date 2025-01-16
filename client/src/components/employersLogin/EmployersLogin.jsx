@@ -83,7 +83,7 @@ const EmployersLogin = () => {
     <div className="fixed inset-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center">
       <form
         onSubmit={onSubmitHandler}
-        className="relative w-[350px] bg-white p-10 rounded-xl text-slate-500"
+        className="relative max-w-[330px] sm:w-[350px] bg-white p-8 sm:p-10 rounded-xl text-slate-500"
       >
         <h1 className="text-center text-2xl text-neutral-700 font-medium mb-3">
           Employer {isLoginMode ? "Login" : "SignUp"}
@@ -95,30 +95,26 @@ const EmployersLogin = () => {
         </p>
         <>
           {!isLoginMode && isTextDataSubmited ? (
-            <>
-              <div className="flex items-center gap-4 my-10">
-                <label htmlFor="image">
-                  <img
-                    src={
-                      image ? URL.createObjectURL(image) : assets.upload_area
-                    }
-                    alt=""
-                    className="h-14 w-14 cursor-pointer rounded-full"
-                  />
-                  <input
-                    type="file"
-                    id="image"
-                    onChange={(e) => setImage(e.target.files[0])}
-                    hidden
-                  />
-                </label>
-                <p>
-                  Upload Company <br /> Logo
-                </p>
-              </div>
-            </>
+            <div className="flex items-center gap-4 my-10">
+              <label htmlFor="image">
+                <img
+                  src={image ? URL.createObjectURL(image) : assets.upload_area}
+                  alt=""
+                  className="h-14 w-14 cursor-pointer rounded-full"
+                />
+                <input
+                  type="file"
+                  id="image"
+                  onChange={(e) => setImage(e.target.files[0])}
+                  hidden
+                />
+              </label>
+              <p>
+                Upload Company <br /> Logo
+              </p>
+            </div>
           ) : (
-            <>
+            <div className="w-full">
               {!isLoginMode && (
                 <InputField
                   icon={assets.person_icon}
@@ -160,7 +156,7 @@ const EmployersLogin = () => {
                   Forgot Password
                 </p>
               )}
-            </>
+            </div>
           )}
         </>
         <button
