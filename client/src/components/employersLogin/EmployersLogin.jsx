@@ -83,12 +83,12 @@ const EmployersLogin = () => {
     <div className="fixed inset-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center">
       <form
         onSubmit={onSubmitHandler}
-        className="relative w-[330px] sm:w-[350px] bg-white p-10 rounded-xl text-slate-500"
+        className="relative w-[90%] max-w-[330px] sm:max-w-[350px] bg-white p-6 sm:p-8 rounded-xl text-slate-500"
       >
-        <h1 className="text-center text-2xl text-neutral-700 font-medium mb-3">
+        <h1 className="text-center text-xl sm:text-2xl text-neutral-700 font-medium mb-3">
           Employer {isLoginMode ? "Login" : "SignUp"}
         </h1>
-        <p className="text-sm text-center mb-4">
+        <p className="text-sm sm:text-base text-center mb-4">
           {isLoginMode
             ? "Welcome back! Please sign in to continue."
             : "Create an account to get started!"}
@@ -96,14 +96,14 @@ const EmployersLogin = () => {
         <>
           {!isLoginMode && isTextDataSubmited ? (
             <>
-              <div className="flex items-center gap-4 my-10">
-                <label htmlFor="image">
+              <div className="flex flex-col items-center gap-4 my-6 sm:my-10">
+                <label htmlFor="image" className="flex flex-col items-center">
                   <img
                     src={
                       image ? URL.createObjectURL(image) : assets.upload_area
                     }
                     alt=""
-                    className="h-14 w-14 cursor-pointer rounded-full"
+                    className="h-14 w-14 cursor-pointer rounded-full object-cover"
                   />
                   <input
                     type="file"
@@ -111,10 +111,10 @@ const EmployersLogin = () => {
                     onChange={(e) => setImage(e.target.files[0])}
                     hidden
                   />
+                  <p className="text-center text-sm mt-2">
+                    Upload Company <br /> Logo
+                  </p>
                 </label>
-                <p>
-                  Upload Company <br /> Logo
-                </p>
               </div>
             </>
           ) : (
@@ -142,6 +142,7 @@ const EmployersLogin = () => {
                 placeholder="Your Email"
                 autoComplete="email"
                 required
+                className="text-sm sm:text-base"
               />
               <InputField
                 icon={assets.lock_icon}
@@ -154,9 +155,10 @@ const EmployersLogin = () => {
                 showPass={showPass}
                 showPassHandler={() => setShowPass(!showPass)}
                 required
+                className="text-sm sm:text-base"
               />
               {isLoginMode && (
-                <p className="text-[12px] w-fit text-blue-600 mt-1 mb-4 cursor-pointer hover:underline">
+                <p className="text-xs sm:text-sm w-fit text-blue-600 mt-1 mb-4 cursor-pointer hover:underline">
                   Forgot Password
                 </p>
               )}
@@ -165,8 +167,7 @@ const EmployersLogin = () => {
         </>
         <button
           type="submit"
-          className={`w-full text-white py-2 rounded-md 
-           bg-blue-600 transition-all mt-4`}
+          className="w-full text-white py-2 rounded-md bg-blue-600 transition-all mt-4 text-sm sm:text-base"
         >
           {isLoginMode
             ? "Login"
@@ -174,7 +175,7 @@ const EmployersLogin = () => {
             ? "Create Account"
             : "Next"}
         </button>
-        <p className="mt-5 text-center">
+        <p className="mt-5 text-center text-sm sm:text-base">
           {isLoginMode ? "Don't have an account?" : "Already have an account?"}
           <span
             className="text-blue-600 cursor-pointer hover:underline"
@@ -187,7 +188,7 @@ const EmployersLogin = () => {
         <img
           src={assets.cross_icon}
           width={15}
-          alt="Close"
+          alt="closeIcon"
           className="absolute top-5 right-5 cursor-pointer"
           onClick={() => setShowEmployersLogin(false)}
         />
