@@ -5,6 +5,7 @@ import { AppContext } from "../context/AppContext";
 import { useAuth, useUser } from "@clerk/clerk-react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Loader } from "../shared";
 
 export const Applications = () => {
   const [isEdit, setIsEdit] = useState(false);
@@ -63,7 +64,7 @@ export const Applications = () => {
     <>
       <Header />
       <div className="container mx-auto px-4 min-h-[65vh] 2xl:px-20 my-10">
-        <h2 className="text-xl font-semibold">Your Resume</h2>
+        <h2 className="sm:text-xl text-gray-600 font-semibold">Your Resume</h2>
         <div className="flex gap-2 mb-6 mt-3 ">
           {isEdit || (userData && userData.resume === "") ? (
             <>
@@ -113,11 +114,7 @@ export const Applications = () => {
             </div>
           )}
         </div>
-        {userApplications.length === 0 ? (
-          <p className="text-xl sm:text-2xl">No Jobs Applied!!!</p>
-        ) : (
-          <AppliedJobTable />
-        )}
+        {userApplications.length === 0 ? <Loader /> : <AppliedJobTable />}
       </div>
       <Footer />
     </>
