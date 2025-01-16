@@ -83,9 +83,9 @@ const EmployersLogin = () => {
     <div className="fixed inset-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center">
       <form
         onSubmit={onSubmitHandler}
-        className="relative max-w-[330px] sm:w-[350px] bg-white p-8 sm:p-10 rounded-xl text-slate-500"
+        className="relative w-[330px] sm:w-[350px] bg-white p-8 sm:p-10 rounded-xl text-slate-500"
       >
-        <h1 className="text-center text-2xl text-neutral-700 font-medium mb-3">
+        <h1 className="text-center text-xl md:text-2xl text-neutral-700 font-medium mb-3">
           Employer {isLoginMode ? "Login" : "SignUp"}
         </h1>
         <p className="text-sm text-center mb-4">
@@ -95,24 +95,28 @@ const EmployersLogin = () => {
         </p>
         <>
           {!isLoginMode && isTextDataSubmited ? (
-            <div className="flex items-center gap-4 my-10">
-              <label htmlFor="image">
-                <img
-                  src={image ? URL.createObjectURL(image) : assets.upload_area}
-                  alt=""
-                  className="h-14 w-14 cursor-pointer rounded-full"
-                />
-                <input
-                  type="file"
-                  id="image"
-                  onChange={(e) => setImage(e.target.files[0])}
-                  hidden
-                />
-              </label>
-              <p>
-                Upload Company <br /> Logo
-              </p>
-            </div>
+            <>
+              <div className="flex items-center gap-4 my-10">
+                <label htmlFor="image">
+                  <img
+                    src={
+                      image ? URL.createObjectURL(image) : assets.upload_area
+                    }
+                    alt=""
+                    className="h-14 w-14 cursor-pointer rounded-full"
+                  />
+                  <input
+                    type="file"
+                    id="image"
+                    onChange={(e) => setImage(e.target.files[0])}
+                    hidden
+                  />
+                </label>
+                <p>
+                  Upload Company <br /> Logo
+                </p>
+              </div>
+            </>
           ) : (
             <>
               {!isLoginMode && (
@@ -170,10 +174,10 @@ const EmployersLogin = () => {
             ? "Create Account"
             : "Next"}
         </button>
-        <p className="mt-5 text-center">
+        <p className="mt-5 text-sm text-center">
           {isLoginMode ? "Don't have an account?" : "Already have an account?"}
           <span
-            className="text-blue-600 cursor-pointer hover:underline"
+            className="text-blue-600 text-sm cursor-pointer hover:underline"
             onClick={() => setIsLoginMode(!isLoginMode)}
           >
             {isLoginMode ? "SignUp" : "Login"}
@@ -183,7 +187,7 @@ const EmployersLogin = () => {
         <img
           src={assets.cross_icon}
           width={15}
-          alt="closeIcon"
+          alt="Close"
           className="absolute top-5 right-5 cursor-pointer"
           onClick={() => setShowEmployersLogin(false)}
         />
