@@ -29,7 +29,6 @@ export const AppContextProvider = ({ children }) => {
 
       if (data.success) {
         setJobs(data.jobs);
-        console.log(data.jobs);
       } else {
         toast.error(data.message);
       }

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { assets } from "../assets/assets";
 import { AppliedJobTable, Footer, Header } from "../components";
 import { AppContext } from "../context/AppContext";
@@ -13,7 +13,8 @@ export const Applications = () => {
   const { user } = useUser();
   const { getToken } = useAuth();
 
-  const { backendUrl, userData, fetchUserData } = useContext(AppContext);
+  const { backendUrl, userData, fetchUserData, fetchUserApplications } =
+    useContext(AppContext);
 
   const updateResume = async () => {
     try {
@@ -46,6 +47,12 @@ export const Applications = () => {
       setResume(null);
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      fetchUserApplications();
+    }
+  }, [user]);
 
   return (
     <>
@@ -83,7 +90,7 @@ export const Applications = () => {
           ) : (
             <div className="flex gap-2">
               <a
-                href={userData?.resume} // Replace with actual resume URL
+                href={userData.resume}
                 className="bg-blue-100 text-blue-600 border border-blue-400
                   px-2 py-2 rounded-lg"
                 target="_blank"

@@ -10,7 +10,6 @@ const Header = () => {
   const { user } = useUser();
   const { setShowEmployersLogin, companyToken, companyData } =
     useContext(AppContext);
- 
 
   return (
     <div className="shadow-md py-4">
@@ -50,18 +49,28 @@ const Header = () => {
             >
               {companyToken
                 ? companyData && (
-                    <img
-                      src={companyData.image}
-                      alt=""
-                      className="md:h-9 md:w-9 h-7 w-7 object-contain"
-                    />
+                    <div className="flex items-center gap-4">
+                      <p className="max-sm:hidden text-gray-800 font-semibold">
+                        Welcome, &nbsp;
+                        <span className="text-gray-600 capitalize">
+                          {companyData.name}
+                        </span>
+                      </p>
+                      <img
+                        src={companyData.image}
+                        alt=""
+                        className="h-7 w-7 object-contain"
+                      />
+                    </div>
                   )
                 : "EMPLOYERS"}
             </button>
             <button
               onClick={() => openSignIn()}
-              className="text-white bg-blue-700 font-medium px-4 sm:px-4 py-2 
-              rounded"
+              className={`${
+                companyToken && "hidden"
+              } text-white bg-blue-700 font-medium px-4 sm:px-4 py-2 
+              rounded`}
             >
               Login
             </button>

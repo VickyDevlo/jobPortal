@@ -26,7 +26,7 @@ export const Dashboard = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="shadow-md py-5">
+      <div className="shadow-md py-4">
         <div className="container mx-auto px-2 2xl:px-20 flex items-center justify-between">
           <img
             src={assets.logo}
@@ -35,7 +35,7 @@ export const Dashboard = () => {
             onClick={() => navigate("/")}
           />
           {companyData && (
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 mr-2">
               <p className="max-sm:hidden text-gray-800 font-semibold">
                 Welcome, &nbsp;
                 <span className="text-gray-600 capitalize">
@@ -46,7 +46,7 @@ export const Dashboard = () => {
                 <img
                   src={companyData.image}
                   alt=""
-                  className="w-8 border rounded-full"
+                  className="h-7 w-7 object-contain"
                 />
                 <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-10">
                   <ul className="list-none m-0 p-2 bg-white rounded border text-sm">
@@ -98,7 +98,7 @@ export const Dashboard = () => {
             </NavLink>
           </ul>
         </div>
-        <div className="">
+        <div className="flex-1 h-full p-2 sm:p-5">
           <Outlet />
         </div>
       </div>

@@ -4,13 +4,14 @@ import moment from "moment";
 import { AppContext } from "../context/AppContext";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { Loader } from "../shared";
 
 export const ManageJobs = () => {
   const { backendUrl, companyToken } = useContext(AppContext);
 
   const navigate = useNavigate();
 
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState(false);
 
   const fetchCompanyJobs = async () => {
     try {
@@ -19,7 +20,7 @@ export const ManageJobs = () => {
       });
 
       if (data.success) {
-        setJobs(data.jobsData.reverse()); 
+        setJobs(data.jobsData.reverse());
       } else {
         toast.error(data.message);
       }
@@ -52,56 +53,64 @@ export const ManageJobs = () => {
     }
   }, [companyToken]);
 
-  return (
-    <div className="container mx-auto max-w-5xl max-sm:p-5 sm:p-8">
-      <div className="overflow-x-auto">
-        <table
-          className="min-w-full bg-white max-sm:text-sm border 
+  return jobs ? (
+    jobs.length === 0 ? (
+      <div className="flex items-center justify-center h-[70vh]">
+        <p className="text-xl sm:text-2xl">No Jobs Available or Posted!!!</p>
+      </div>
+    ) : (
+      <div className="container mx-auto max-w-5xl max-sm:p-5 sm:p-8">
+        <div className="overflow-x-auto">
+          <table
+            className="min-w-full bg-white max-sm:text-sm border 
         border-gray-200"
-        >
-          <thead>
-            <tr className="text-center">
-              <th className="py-2 px-4 border-b max-sm:hidden">Sr.No.</th>
-              <th className="py-2 px-4 border-b">Job Title</th>
-              <th className="py-2 px-4 border-b max-sm:hidden">Date</th>
-              <th className="py-2 px-4 border-b max-sm:hidden">Location</th>
-              <th className="py-2 px-4 border-b">Applicants</th>
-              <th className="py-2 px-4 border-b">Visible</th>
-            </tr>
-          </thead>
-          <tbody>
-            {jobs.map((job, i) => (
-              <tr key={i} className="text-center text-gray-700">
-                <td className="py-2 px-4 border-b max-sm:hidden">{i + 1}</td>
-                <td className="py-2 px-4 border-b">{job.title}</td>
-                <td className="py-2 px-4 border-b max-sm:hidden">
-                  {moment(job.date).format("ll")}
-                </td>
-                <td className="py-2 px-4 border-b max-sm:hidden">
-                  {job.location}
-                </td>
-                <td className="py-2 px-4 border-b">{job.applicants}</td>
-                <td className="py-2 px-4 border-b">
-                  <input
-                    type="checkbox"
-                    onChange={() => changeJobVisibility(job._id)}
-                    checked={job.visible}
-                    className="scale-125 ml-4"
-                  />
-                </td>
+          >
+            <thead>
+              <tr className="text-center">
+                <th className="py-2 px-4 border-b max-sm:hidden">Sr.No.</th>
+                <th className="py-2 px-4 border-b">Job Title</th>
+                <th className="py-2 px-4 border-b max-sm:hidden">Date</th>
+                <th className="py-2 px-4 border-b max-sm:hidden">Location</th>
+                <th className="py-2 px-4 border-b">Applicants</th>
+                <th className="py-2 px-4 border-b">Visible</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {jobs.map((job, i) => (
+                <tr key={i} className="text-center text-gray-700">
+                  <td className="py-2 px-4 border-b max-sm:hidden">{i + 1}</td>
+                  <td className="py-2 px-4 border-b">{job.title}</td>
+                  <td className="py-2 px-4 border-b max-sm:hidden">
+                    {moment(job.date).format("ll")}
+                  </td>
+                  <td className="py-2 px-4 border-b max-sm:hidden">
+                    {job.location}
+                  </td>
+                  <td className="py-2 px-4 border-b">{job.applicants}</td>
+                  <td className="py-2 px-4 border-b">
+                    <input
+                      type="checkbox"
+                      onChange={() => changeJobVisibility(job._id)}
+                      checked={job.visible}
+                      className="scale-125 ml-4"
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="mt-4 flex justify-end">
+          <button
+            onClick={() => navigate("/dashboard/add-job")}
+            className="bg-black text-white px-4 py-2 rounded"
+          >
+            Add New Job
+          </button>
+        </div>
       </div>
-      <div className="mt-4 flex justify-end">
-        <button
-          onClick={() => navigate("/dashboard/add-job")}
-          className="bg-black text-white px-4 py-2 rounded"
-        >
-          Add New Job
-        </button>
-      </div>
-    </div>
+    )
+  ) : (
+    <Loader />
   );
 };
