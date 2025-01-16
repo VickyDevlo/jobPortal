@@ -21,7 +21,7 @@ export const Layout = () => {
   return (
     <>
       {showEmployersLogin && <EmployersLogin />}
-      <ToastContainer />
+      <ToastContainer position="top-center" />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/apply-jobs/:id" element={<ApplyJobs />} />

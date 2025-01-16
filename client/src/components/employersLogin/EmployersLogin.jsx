@@ -38,7 +38,7 @@ const EmployersLogin = () => {
           localStorage.setItem("companyToken", data.token);
           setShowEmployersLogin(false);
           navigate("/dashboard/add-job");
-          toast.success("login successfully...");
+          toast.success("Login Successfully...");
         } else {
           toast.error(data.message);
         }

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import { assets, JobCategories, JobLocations } from "../../assets/assets";
-import { FilterBy, JobCard } from "../../shared";
+import { FilterBy, JobCard, Loader } from "../../shared";
 
 const JobListing = () => {
   const { isSearched, searchFilter, setSearchFilter, jobs } =
@@ -28,8 +28,6 @@ const JobListing = () => {
         : [...prev, location]
     );
   };
-
-  
 
   useEffect(() => {
     const filterJobs = () => {
@@ -144,7 +142,7 @@ const JobListing = () => {
           Latest jobs
         </h3>
         <p className="mb-8">Get your desired job from top companies</p>
-        {filteredJobs.length > 0 ? (
+        {filteredJobs ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
             {filteredJobs
               .slice((currentPage - 1) * 6, currentPage * 6)
@@ -153,11 +151,8 @@ const JobListing = () => {
               ))}
           </div>
         ) : (
-          <h2 className=" text-xl md:text-2xl font-medium bg-red-100 px-12 py-3">
-            No Jobs Opening...
-          </h2>
+          <Loader />
         )}
-
         {filteredJobs.length > 0 && (
           <div className="flex items-center justify-center space-x-3 mt-10">
             <a href="#job-list">

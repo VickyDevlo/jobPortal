@@ -29,8 +29,10 @@ export const AddJobs = () => {
         { headers: { token: companyToken } }
       );
 
+      console.log(data.message);
+      
       if (data.success) {
-        toast.success(data.message);
+        toast.success('Job Added Successfully...');
         setTitle("");
         setSalary("");
         quillRef.current.root.innerHTML = "";

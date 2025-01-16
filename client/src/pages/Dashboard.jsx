@@ -15,7 +15,7 @@ export const Dashboard = () => {
     localStorage.removeItem("companyToken");
     setCompanyData(null);
     navigate("/");
-    toast.success("Logout Successfully...");
+    toast.error("Logout Successfully...");
   };
 
   useEffect(() => {
@@ -94,7 +94,7 @@ export const Dashboard = () => {
               to={"/dashboard/view-applications"}
             >
               <img className="min-w-4" src={assets.person_tick_icon} alt="" />
-              <p className="max-sm:hidden">View Applications</p>
+              <p className="max-sm:hidden whitespace-nowrap">View Applications</p>
             </NavLink>
           </ul>
         </div>

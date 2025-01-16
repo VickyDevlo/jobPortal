@@ -18,7 +18,7 @@ const MoreJobSection = ({ jobData }) => {
           const appliedJobsIds = new Set(
             userApplications.map((app) => app.jobId && app.jobId._id)
           );
-          return !appliedJobsIds.has(job._id)
+          return !appliedJobsIds.has(job._id);
         })
         .slice(0, 4)
         .map((job, i) => (

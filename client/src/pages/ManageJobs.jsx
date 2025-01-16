@@ -66,30 +66,26 @@ export const ManageJobs = () => {
             border-gray-200"
           >
             <thead>
-              <tr className="text-center">
-                <th className="py-2 px-4 border-b max-sm:hidden">Sr.No.</th>
-                <th className="border-b py-2 px-1 max-sm:text-xs">Job Title</th>
-                <th className="py-2 px-4 border-b max-sm:hidden">Date</th>
-                <th className="py-2 px-4 border-b max-sm:hidden">Location</th>
-                <th className="border-b py-2 px-1 max-sm:text-xs">
-                  Applicants
-                </th>
-                <th className="border-b py-2 px-1 max-sm:text-xs">Visible</th>
+              <tr className="text-center border-b">
+                <th className="py-2 px-4 max-sm:hidden">Sr.No.</th>
+                <th className="py-2 px-1 max-sm:text-xs">Job Title</th>
+                <th className="py-2 px-4 max-sm:hidden">Date</th>
+                <th className="py-2 px-4 max-sm:hidden">Location</th>
+                <th className="py-2 px-1 max-sm:text-xs">Applicants</th>
+                <th className="py-2 px-1 max-sm:text-xs">Visible</th>
               </tr>
             </thead>
             <tbody>
               {jobs.map((job, i) => (
-                <tr key={i} className="text-center text-gray-700">
-                  <td className="py-2 px-4 border-b max-sm:hidden">{i + 1}</td>
-                  <td className="py-2 px-4 border-b">{job.title}</td>
-                  <td className="py-2 px-4 border-b max-sm:hidden">
+                <tr key={i} className="text-center text-gray-700 border-b">
+                  <td className="py-2 px-4 max-sm:hidden">{i + 1}</td>
+                  <td className="py-2 px-4">{job.title}</td>
+                  <td className="py-2 px-4 max-sm:hidden">
                     {moment(job.date).format("ll")}
                   </td>
-                  <td className="py-2 px-4 border-b max-sm:hidden">
-                    {job.location}
-                  </td>
-                  <td className="py-2 px-4 border-b">{job.applicants}</td>
-                  <td className="py-2 px-4 border-b">
+                  <td className="py-2 px-4 max-sm:hidden">{job.location}</td>
+                  <td className="py-2 px-4">{job.applicants}</td>
+                  <td className="py-2 px-4">
                     <input
                       type="checkbox"
                       onChange={() => changeJobVisibility(job._id)}

@@ -81,9 +81,9 @@ export const ViewApplications = () => {
               {applicants
                 .filter((item) => item.jobId && item.userId)
                 .map((applicant, i) => (
-                  <tr key={i} className="text-gray-700 text-center">
-                    <td className="py-2 border-b text-center">{i + 1}</td>
-                    <td className="border-b">
+                  <tr key={i} className="text-gray-700 text-center border-b">
+                    <td className="py-2  text-center">{i + 1}</td>
+                    <td className="">
                       <div className="flex items-center">
                         <img
                           src={applicant.userId.image}
@@ -93,13 +93,13 @@ export const ViewApplications = () => {
                         <span className="text-sm">{applicant.userId.name}</span>
                       </div>
                     </td>
-                    <td className="py-2 px-4 border-b max-sm:hidden">
+                    <td className="py-2 px-4  max-sm:hidden">
                       {applicant.jobId.title}
                     </td>
-                    <td className="py-2 px-4 border-b max-sm:hidden">
+                    <td className="py-2 px-4  max-sm:hidden">
                       {applicant.jobId.location}
                     </td>
-                    <td className="py-2 px-4 border-b">
+                    <td className="py-2 px-4 ">
                       <a
                         href={applicant.userId.resume}
                         target="_black"
@@ -110,7 +110,7 @@ export const ViewApplications = () => {
                         <img src={assets.resume_download_icon} alt="" />
                       </a>
                     </td>
-                    <td className="py-2 px-4 border-b relative">
+                    <td className="py-2 px-4  relative">
                       {applicant.status === "Pending" ? (
                         <div className="relative inline-block text-left group">
                           <button className="text-gray-500 action-button">

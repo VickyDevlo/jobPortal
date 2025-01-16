@@ -18,7 +18,7 @@ const Header = () => {
           src={assets.logo}
           alt="logo"
           onClick={() => navigate("/")}
-          className="h-8 sm:h-8 cursor-pointer"
+          className="h-6 sm:h-8 object-contain cursor-pointer"
         />
         {user ? (
           <div className="ml-3 flex items-center gap-1 md:gap-2">
@@ -37,10 +37,11 @@ const Header = () => {
         ) : (
           <div className="flex gap-1 md:gap-4 max-sm:text-sm">
             <button
-              className={`text-gray-600 font-bold ml-1 md:m-0 px-2  ${
-                companyToken &&
-                "border-none font-bold capitalize hover:bg-transparent"
-              }`}
+              className={`text-gray-600 font-bold ml-1 md:m-0 px-2
+                ${
+                  companyToken &&
+                  "border-none font-bold capitalize hover:bg-transparent"
+                }`}
               onClick={() => {
                 companyToken
                   ? navigate("/dashboard")
@@ -69,7 +70,7 @@ const Header = () => {
               onClick={() => openSignIn()}
               className={`${
                 companyToken && "hidden"
-              } text-white bg-blue-700 font-medium px-4 sm:px-4 py-2 
+              } text-white bg-blue-900 font-medium px-4 sm:px-4 py-1 
               rounded`}
             >
               Login

@@ -15,8 +15,13 @@ export const ApplyJobs = () => {
   const [isAlreadyApplied, setIsAlreadyApplied] = useState(false);
   const navigate = useNavigate();
 
-  const { backendUrl, userData, userApplications, fetchUserApplications } =
-    useContext(AppContext);
+  const {
+    backendUrl,
+    userData,
+    jobs,
+    userApplications,
+    fetchUserApplications,
+  } = useContext(AppContext);
 
   const { getToken } = useAuth();
   const { id } = useParams();
@@ -57,7 +62,7 @@ export const ApplyJobs = () => {
 
       if (data.success) {
         toast.success(data.message);
-       fetchUserApplications()
+        fetchUserApplications();
       } else {
         toast.error(data.message);
       }
@@ -72,6 +77,10 @@ export const ApplyJobs = () => {
     );
     setIsAlreadyApplied(hasApplied);
   };
+
+  const hasMoreJobs =
+    jobs.filter((job) => job.companyId._id === jobData?.companyId._id).length >
+    1;
 
   useEffect(() => {
     fetchJob();
@@ -149,9 +158,12 @@ export const ApplyJobs = () => {
                 {isAlreadyApplied ? "Applied" : "Apply Now"}
               </button>
             </div>
-            <div className="w-full lg:w-1/3 mt-8 lg:mt-0 space-y-5">
-              <MoreJobSection jobData={jobData} />
-            </div>
+            {/* Show MoreJobSection only if the company has more than one job */}
+            {hasMoreJobs && (
+              <div className="w-full lg:w-1/3 mt-8 lg:mt-0 space-y-5">
+                <MoreJobSection jobData={jobData} />
+              </div>
+            )}
           </div>
         </div>
       </div>
