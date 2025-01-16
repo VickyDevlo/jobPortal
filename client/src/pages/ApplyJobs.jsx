@@ -153,12 +153,11 @@ export const ApplyJobs = () => {
                 onClick={applyHandler}
                 className={`${
                   isAlreadyApplied && "bg-red-600"
-                } bg-blue-600 p-2.5 px-10 text-white rounded text-base`}
+                } bg-blue-600 p-2.5 px-10 mt-5 text-white rounded text-base`}
               >
                 {isAlreadyApplied ? "Applied" : "Apply Now"}
               </button>
             </div>
-            {/* Show MoreJobSection only if the company has more than one job */}
             {hasMoreJobs && (
               <div className="w-full lg:w-1/3 mt-8 lg:mt-0 space-y-5">
                 <MoreJobSection jobData={jobData} />

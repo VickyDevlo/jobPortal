@@ -7,7 +7,6 @@ import { Loader } from "../shared/Loader";
 
 export const ViewApplications = () => {
   const { backendUrl, companyToken } = useContext(AppContext);
-
   const [applicants, setApplicants] = useState(false);
 
   const fetchCompanyJobApplication = async () => {
@@ -61,18 +60,22 @@ export const ViewApplications = () => {
           <table className="w-full max-w-4xl bg-white border border-gray-200 max-sm:text-sm">
             <thead>
               <tr className="border-b text-center">
-                <th className="py-2 px-1 max-sm:text-xs whitespace-nowrap">
+                <th className="py-2 max-sm:px-1 px-1 max-sm:text-xs sm:whitespace-nowrap max-sm:hidden">
                   Sr.No.
                 </th>
-                <th className="py-2 px-1 max-sm:text-xs whitespace-nowrap">
+                <th className="py-2 max-sm:px-1 px-1 max-sm:text-xs whitespace-nowrap">
                   User Name
                 </th>
-                <th className="py-2 px-4 max-sm:hidden">Job Title</th>
-                <th className="py-2 px-4 max-sm:hidden">Location</th>
-                <th className="py-2 px-1 max-sm:text-xs whitespace-nowrap">
+                <th className="py-2 max-sm:px-1 px-4 max-sm:hidden">
+                  Job Title
+                </th>
+                <th className="py-2 max-sm:px-1 px-4 max-sm:hidden">
+                  Location
+                </th>
+                <th className="py-2 max-sm:px-1 px-1 max-sm:text-xs sm:whitespace-nowrap">
                   Resume
                 </th>
-                <th className="py-2 px-1 max-sm:text-xs whitespace-nowrap">
+                <th className="py-2 max-sm:px-1 px-1 max-sm:text-xs sm:whitespace-nowrap">
                   Action
                 </th>
               </tr>
@@ -82,41 +85,42 @@ export const ViewApplications = () => {
                 .filter((item) => item.jobId && item.userId)
                 .map((applicant, i) => (
                   <tr key={i} className="text-gray-700 text-center border-b">
-                    <td className="py-2  text-center">{i + 1}</td>
-                    <td className="">
+                    <td className="py-2 max-sm:hidden text-center">{i + 1}</td>
+                    <td>
                       <div className="flex items-center">
                         <img
                           src={applicant.userId.image}
                           alt=""
                           className="w-8 h-8 rounded-full mr-3 max-sm:hidden"
                         />
-                        <span className="text-sm">{applicant.userId.name}</span>
+                        <span className="font-medium sm:whitespace-nowrap py-2 max-sm:px-2 px-4">
+                          {applicant.userId.name}
+                        </span>
                       </div>
                     </td>
-                    <td className="py-2 px-4  max-sm:hidden">
+                    <td className="py-2 max-sm:px-2 px-4 font-medium max-sm:hidden">
                       {applicant.jobId.title}
                     </td>
-                    <td className="py-2 px-4  max-sm:hidden">
+                    <td className="py-2 max-sm:px-2 px-4 font-medium max-sm:hidden">
                       {applicant.jobId.location}
                     </td>
-                    <td className="py-2 px-4 ">
+                    <td className="py-2 font-medium max-sm:px-2 px-4">
                       <a
                         href={applicant.userId.resume}
                         target="_black"
-                        className="bg-blue-50 text-blue-400 
-                  px-3 py-1 rounded inline-flex gap-2 items-center"
+                        className="bg-blue-50 text-blue-400 max-sm:px-2 px-3 py-1 rounded inline-flex gap-2 items-center"
                       >
                         Resume
                         <img src={assets.resume_download_icon} alt="" />
                       </a>
                     </td>
-                    <td className="py-2 px-4  relative">
+                    <td className="py-2 max-sm:px-2 px-4 relative">
                       {applicant.status === "Pending" ? (
                         <div className="relative inline-block text-left group">
                           <button className="text-gray-500 action-button">
                             ...
                           </button>
-                          <div className="hidden absolute z-10 right-0 left-0 top-0 mt-2 w-32 bg-white border border-gray-200s rounded shadow group-hover:block">
+                          <div className="hidden absolute z-10 right-0 left-0 top-0 mt-2 w-32 bg-white border border-gray-200 rounded shadow group-hover:block">
                             <button
                               onClick={() =>
                                 changeJobApplicationStatus(
@@ -124,8 +128,7 @@ export const ViewApplications = () => {
                                   "Accepted"
                                 )
                               }
-                              className="block w-full text-left px-4 py-2 
-                            text-blue-500 hover:bg-gray-100"
+                              className="block w-full text-left max-sm:px-2 px-4 py-2 text-blue-500 hover:bg-gray-100"
                             >
                               Accept
                             </button>
@@ -136,8 +139,7 @@ export const ViewApplications = () => {
                                   "Rejected"
                                 )
                               }
-                              className="block w-full text-left px-4 py-2 
-                            text-red-500 hover:bg-gray-100"
+                              className="block w-full text-left max-sm:px-2 px-4 py-2 text-red-500 hover:bg-gray-100"
                             >
                               Reject
                             </button>
@@ -145,7 +147,7 @@ export const ViewApplications = () => {
                         </div>
                       ) : (
                         <div
-                          className={`${
+                          className={`font-medium ${
                             applicant.status === "Accepted"
                               ? "text-green-500"
                               : "text-red-500"

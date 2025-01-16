@@ -66,7 +66,7 @@ export const ManageJobs = () => {
             border-gray-200"
           >
             <thead>
-              <tr className="text-center border-b">
+              <tr className="border-b">
                 <th className="py-2 px-4 max-sm:hidden">Sr.No.</th>
                 <th className="py-2 px-1 max-sm:text-xs">Job Title</th>
                 <th className="py-2 px-4 max-sm:hidden">Date</th>
@@ -78,14 +78,22 @@ export const ManageJobs = () => {
             <tbody>
               {jobs.map((job, i) => (
                 <tr key={i} className="text-center text-gray-700 border-b">
-                  <td className="py-2 px-4 max-sm:hidden">{i + 1}</td>
-                  <td className="py-2 px-4">{job.title}</td>
-                  <td className="py-2 px-4 max-sm:hidden">
+                  <td className="py-2 max-sm:px-2 px-4 font-medium max-sm:hidden">
+                    {i + 1}
+                  </td>
+                  <td className="py-2 max-sm:px-2 px-4 font-medium">
+                    {job.title}
+                  </td>
+                  <td className="py-2 max-sm:px-2 px-4 font-medium max-sm:hidden">
                     {moment(job.date).format("ll")}
                   </td>
-                  <td className="py-2 px-4 max-sm:hidden">{job.location}</td>
-                  <td className="py-2 px-4">{job.applicants}</td>
-                  <td className="py-2 px-4">
+                  <td className="py-2 max-sm:px-2 px-4 font-medium max-sm:hidden">
+                    {job.location}
+                  </td>
+                  <td className="py-2 max-sm:px-2 px-4 font-medium">
+                    {job.applicants}
+                  </td>
+                  <td className="py-2 max-sm:px-2 px-4 font-medium">
                     <input
                       type="checkbox"
                       onChange={() => changeJobVisibility(job._id)}

@@ -7,7 +7,12 @@ const MoreJobSection = ({ jobData }) => {
 
   return (
     <>
-      <h2>More Jobs from {jobData.companyId.name}</h2>
+      <h2 className="text-gray-500 font-medium">
+        More Jobs From
+        <span className="capitalize ml-1 font-semibold text-gray-900">
+          {jobData.companyId.name}
+        </span>
+      </h2>
       {jobs
         .filter(
           (job) =>
