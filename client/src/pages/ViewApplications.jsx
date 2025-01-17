@@ -120,7 +120,7 @@ export const ViewApplications = () => {
                           <button className="text-gray-500 action-button">
                             ...
                           </button>
-                          <div className="hidden absolute z-10 right-0 left-0 top-0 mt-2 w-32 bg-white border border-gray-200 rounded shadow group-hover:block">
+                          <div className="hidden absolute z-10 right-4 sm:right-0 sm:left-0 top-0 mt-2 w-32 bg-white border border-gray-200 rounded shadow group-hover:block">
                             <button
                               onClick={() =>
                                 changeJobApplicationStatus(

@@ -31,7 +31,7 @@ export const Dashboard = () => {
           <img
             src={assets.logo}
             alt=""
-            className="h-8 sm:h-8 cursor-pointer"
+            className="h-6 sm:h-8 cursor-pointer"
             onClick={() => navigate("/")}
           />
           {companyData && (
@@ -69,7 +69,9 @@ export const Dashboard = () => {
             <NavLink
               className={({ isActive }) =>
                 `flex items-center p-3 sm:px-6 gap-2 w-full hover:bg-gray-100 
-          ${isActive && "bg-blue-100 border-r-4 border-blue-400"}`
+          ${
+            isActive && "bg-blue-100 border-r-4 border-blue-400 font-semibold "
+          }`
               }
               to={"/dashboard/add-job"}
             >
@@ -79,7 +81,9 @@ export const Dashboard = () => {
             <NavLink
               className={({ isActive }) =>
                 `flex items-center p-3 sm:px-6 gap-2 w-full hover:bg-gray-100 
-          ${isActive && "bg-blue-100 border-r-4 border-blue-400"}`
+          ${
+            isActive && "bg-blue-100 border-r-4 border-blue-400 font-semibold "
+          }`
               }
               to={"/dashboard/manage-job"}
             >
@@ -89,12 +93,16 @@ export const Dashboard = () => {
             <NavLink
               className={({ isActive }) =>
                 `flex items-center p-3 sm:px-6 gap-2 w-full hover:bg-gray-100 
-          ${isActive && "bg-blue-100 border-r-4 border-blue-400"}`
+          ${
+            isActive && "bg-blue-100 border-r-4 border-blue-400 font-semibold "
+          }`
               }
               to={"/dashboard/view-applications"}
             >
               <img className="min-w-4" src={assets.person_tick_icon} alt="" />
-              <p className="max-sm:hidden whitespace-nowrap">View Applications</p>
+              <p className="max-sm:hidden whitespace-nowrap">
+                View Applications
+              </p>
             </NavLink>
           </ul>
         </div>
